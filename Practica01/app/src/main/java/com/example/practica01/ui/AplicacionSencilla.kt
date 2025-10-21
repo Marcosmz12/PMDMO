@@ -17,6 +17,10 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +29,9 @@ import com.example.practica01.ui.theme.Practica01Theme
 
 @Composable
 fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
+    var estado by remember { mutableStateOf("Nadie pulsó el botón aún") }
+    var pulsarHabilitado by remember { mutableStateOf(true) }
+    var resetarHabilitado by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -52,13 +59,32 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
 
             }
         }
-        Row(
-            modifier = Modifier.fillMaxWidth()
+        Text(estado)
+        Spacer(modifier = Modifier.height(16.dp))
 
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Button(onClick = {}) { }
+            Button(
+                onClick = {
+                    pulsarHabilitado = false
+                    resetarHabilitado = true
+                    estado = "Marcos Molis Zapata"
+                },
+                enabled = pulsarHabilitado
+            ) {
+                Text("Pulsar")
+            }
             Spacer(modifier = Modifier.width(16.dp))
-            Button(onClick = {}) { }
+            Button(onClick = {
+                pulsarHabilitado = true
+                resetarHabilitado = false
+                estado = "Nadie pulsó el botón aún"
+            }, enabled = resetarHabilitado)
+            {
+                Text("Resetear")
+            }
         }
     }
 }
