@@ -1,6 +1,5 @@
 package com.example.practica01.ui
 
-import android.R.id.message
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -52,7 +52,7 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(5.dp),
                 ) {
                     Text(
-                        text = "This is inside a Card #$index",
+                        text = "Esta es la tarjeta nº$index",
                         modifier = Modifier.padding(10.dp)
                     )
                 }
@@ -89,10 +89,35 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+@Preview(
+    name = "Modo Claro",
+    showBackground = true,
+    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_NO
+)
+@Composable
+fun AplicacionSencillaPreviewClaro() {
+    Practica01Theme {
+        AplicacionSencilla("Android")
+    }
+}
+
+@Preview(
+    name = "Modo Oscuro",
+    showBackground = true,
+    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun AplicacionSencillaPreviewOscuro() {
+    Practica01Theme {
+        AplicacionSencilla("Android")
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
 fun AplicacionSencillaPreview() {
-    Practica01Theme {
+    MaterialTheme {
         AplicacionSencilla("Android")
     }
 }
