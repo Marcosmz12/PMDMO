@@ -1,5 +1,6 @@
 package com.example.practica01.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,7 +24,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,8 +37,7 @@ import com.example.practica01.R
 fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var estado by remember { mutableStateOf(context.getString(R.string.estado_inicial)) }
-    var pulsarHabilitado by remember { mutableStateOf(true) }
-    var resetarHabilitado by remember { mutableStateOf(false) }
+    var pulsarHabilitado by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -53,7 +55,7 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 20.dp
                     ),
-                    modifier = Modifier.padding(5.dp),
+                    modifier = Modifier.padding(5.dp)
 
                 ) {
                     Text(
@@ -74,37 +76,23 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
         ) {
             Button(
                 onClick = {
-                    pulsarHabilitado = false
-                    resetarHabilitado = true
+                    pulsarHabilitado = !pulsarHabilitado
                     estado = context.getString(R.string.estado_pulsado)
                 },
-                enabled = pulsarHabilitado,
+                enabled = !pulsarHabilitado,
 
                 ) {
                 Text(stringResource(id = R.string.boton_pulsar))
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = {
-                pulsarHabilitado = true
-                resetarHabilitado = false
+                pulsarHabilitado = !pulsarHabilitado
                 estado = context.getString(R.string.estado_inicial)
-            }, enabled = resetarHabilitado)
+            }, enabled = pulsarHabilitado)
             {
                 Text(stringResource(id = R.string.boton_resetear))
             }
         }
-    }
-}
-
-@Preview(
-    name = "Modo Claro",
-    showBackground = true,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_NO
-)
-@Composable
-fun AplicacionSencillaPreviewClaro() {
-    Practica01Theme {
-        AplicacionSencilla("Android")
     }
 }
 
@@ -124,7 +112,7 @@ fun AplicacionSencillaPreviewOscuro() {
 @Preview(showBackground = true)
 @Composable
 fun AplicacionSencillaPreview() {
-    MaterialTheme {
+    Practica01Theme {
         AplicacionSencilla("Android")
     }
 }

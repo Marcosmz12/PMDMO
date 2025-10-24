@@ -264,7 +264,7 @@ fun Practica01Theme(
           if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
       }
       
-      darkTheme -> darkScheme
+      darkTheme -> highContrastDarkColorScheme
       else -> lightScheme
   }
 
