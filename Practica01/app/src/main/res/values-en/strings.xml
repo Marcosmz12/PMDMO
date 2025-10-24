@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Practica01</string>
+    <string name="estado_inicial">" Nobody pressed the button yet"</string>
+    <string name="estado_pulsado">Marcos Molis Zapata</string>
+    <string name="boton_pulsar">Press</string>
+    <string name="boton_resetear">Reset</string>
+    <string name="texto_tarjeta">This is card nº%1$d</string>
+</resources>

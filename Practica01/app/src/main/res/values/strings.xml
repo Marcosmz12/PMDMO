@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Practica01</string>
+    <string name="estado_inicial">Nadie pulsó el botón aún</string>
+    <string name="estado_pulsado">Marcos Molis Zapata</string>
+    <string name="boton_pulsar">Pulsar</string>
+    <string name="boton_resetear">Resetear</string>
+    <string name="texto_tarjeta">Esta es la tarjeta nº%1$d</string>
 </resources>

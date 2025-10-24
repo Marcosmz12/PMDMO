@@ -23,21 +23,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practica01.ui.theme.Practica01Theme
+import com.example.practica01.R
 
 @Composable
 fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
-    var estado by remember { mutableStateOf("Nadie pulsó el botón aún") }
+    val context = LocalContext.current
+    var estado by remember { mutableStateOf(context.getString(R.string.estado_inicial)) }
     var pulsarHabilitado by remember { mutableStateOf(true) }
     var resetarHabilitado by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center, // vertical centrar
-        horizontalAlignment = Alignment.CenterHorizontally // horizontal centrar
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         LazyRow {
@@ -50,16 +54,18 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
                         defaultElevation = 20.dp
                     ),
                     modifier = Modifier.padding(5.dp),
+
                 ) {
                     Text(
-                        text = "Esta es la tarjeta nº$index",
+                        text = stringResource(id = R.string.texto_tarjeta, index),
                         modifier = Modifier.padding(10.dp)
                     )
                 }
 
             }
         }
-        Text(estado)
+        Text(estado,
+            style = MaterialTheme.typography.titleLarge)
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(
@@ -70,20 +76,21 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
                 onClick = {
                     pulsarHabilitado = false
                     resetarHabilitado = true
-                    estado = "Marcos Molis Zapata"
+                    estado = context.getString(R.string.estado_pulsado)
                 },
-                enabled = pulsarHabilitado
-            ) {
-                Text("Pulsar")
+                enabled = pulsarHabilitado,
+
+                ) {
+                Text(stringResource(id = R.string.boton_pulsar))
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = {
                 pulsarHabilitado = true
                 resetarHabilitado = false
-                estado = "Nadie pulsó el botón aún"
+                estado = context.getString(R.string.estado_inicial)
             }, enabled = resetarHabilitado)
             {
-                Text("Resetear")
+                Text(stringResource(id = R.string.boton_resetear))
             }
         }
     }

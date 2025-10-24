@@ -1,10 +1,12 @@
-package com.example.ui.theme
+package com.example.practica01.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.googlefonts.Font
+
 import androidx.compose.ui.text.googlefonts.GoogleFont
+import androidx.compose.ui.text.googlefonts.Font
 import com.example.practica01.R
+
 
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -14,14 +16,14 @@ val provider = GoogleFont.Provider(
 
 val bodyFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Abyssinica SIL"),
+        googleFont = GoogleFont("Metamorphous"),
         fontProvider = provider,
     )
 )
 
 val displayFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Abril Fatface"),
+        googleFont = GoogleFont("Metamorphous"),
         fontProvider = provider,
     )
 )
