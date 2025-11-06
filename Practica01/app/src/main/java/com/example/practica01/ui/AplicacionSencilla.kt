@@ -1,5 +1,6 @@
 package com.example.practica01.ui
 
+import android.content.Context
 import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,12 +34,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practica01.R
 import com.example.practica01.ui.theme.Practica01Theme
+import java.security.Principal
 
 @Composable
 fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var estado by remember { mutableStateOf(context.getString(R.string.estado_inicial)) }
-    var pulsarHabilitado by remember { mutableStateOf(false) }
+    var pulsado by remember { mutableStateOf(false) }
+    var lista_vbles by remember { mutableStateOf(false) }
+    var textoPrincipal by remember { mutableStateOf(context.getString(R.string.estado_inicial)) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -86,54 +90,75 @@ fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+        EstablecerBotones(
+            context,
+            pulsado,
+            { nuevoTexto -> estado = nuevoTexto },
+            { pulsado = it })
+
+    }
+}
+
+@Composable
+fun EstablecerBotones(
+    context: Context,
+    pulsado: Boolean,
+    cambiarTextoPrincipal: (String) -> Unit,
+    cambiarPulsado: (Boolean) -> Unit
+) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Button(
+            onClick = {
+//                pulsarHabilitado = !pulsarHabilitado
+//                estado = context.getString(R.string.estado_pulsado)
+                  cambiarTextoPrincipal(context.getString(R.string.estado_pulsado))
+                  cambiarPulsado(!pulsado)
+            },
+            enabled = !pulsado,
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            ),
+            modifier = Modifier
+                .height(56.dp)
+                .width(135.dp)
         ) {
-            Button(
-                onClick = {
-                    pulsarHabilitado = !pulsarHabilitado
-                    estado = context.getString(R.string.estado_pulsado)
-                },
-                enabled = !pulsarHabilitado,
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(
-                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                ),
-                modifier = Modifier
-                    .height(56.dp)
-                    .width(135.dp)
-            ) {
-                Text(
-                    stringResource(id = R.string.boton_pulsar),
-                    fontSize = MaterialTheme.typography.titleMedium.fontSize,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                )
-            }
-            Spacer(modifier = Modifier.width(16.dp))
-            Button(
-                onClick = {
-                    pulsarHabilitado = !pulsarHabilitado
-                    estado = context.getString(R.string.estado_inicial)
-                },
-                enabled = pulsarHabilitado,
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(
-                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                ),
-                modifier = Modifier
-                    .height(56.dp)
-                    .width(145.dp)
+            Text(
+                stringResource(id = R.string.boton_pulsar),
+                fontSize = MaterialTheme.typography.titleMedium.fontSize,
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
             )
-            {
-                Text(
-                    stringResource(id = R.string.boton_resetear),
-                    fontSize = MaterialTheme.typography.titleMedium.fontSize,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                )
-            }
+        }
+        Spacer(modifier = Modifier.width(16.dp))
+        Button(
+            onClick = {
+//                pulsarHabilitado = !pulsarHabilitado
+//                estado = context.getString(R.string.estado_inicial)
+                cambiarTextoPrincipal(context.getString(R.string.estado_inicial))
+                cambiarPulsado(!pulsado)
+
+            },
+            enabled = pulsado,
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            ),
+            modifier = Modifier
+                .height(56.dp)
+                .width(145.dp)
+        )
+        {
+            Text(
+                stringResource(id = R.string.boton_resetear),
+                fontSize = MaterialTheme.typography.titleMedium.fontSize,
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+            )
         }
     }
 }
