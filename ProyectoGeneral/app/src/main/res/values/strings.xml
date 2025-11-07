@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProyectoGeneral</string>
+    <string name="historia">Historia</string>
+    <string name="acercade">Acerca De</string>
+    <string name="sobrenosotros">Sobre Nosotros</string>
+    <string name="fondo">Fondo de palmera</string>
 </resources>

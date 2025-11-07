@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoGeneral</string>
+    <string name="historia">History</string>
+    <string name="acercade">About</string>
+    <string name="sobrenosotros">About us</string>
+    <string name="fondo">Palm tree background</string>
+</resources>

@@ -15,14 +15,14 @@ val provider = GoogleFont.Provider(
 
 val bodyFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Offside"),
+        googleFont = GoogleFont("Zilla Slab"),
         fontProvider = provider,
     )
 )
 
 val displayFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Bungee Outline"),
+        googleFont = GoogleFont("Zilla Slab"),
         fontProvider = provider,
     )
 )
