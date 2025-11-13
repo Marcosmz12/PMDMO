@@ -1,7 +1,6 @@
 package com.example.practica01.ui
 
 import android.content.Context
-import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -34,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practica01.R
 import com.example.practica01.ui.theme.Practica01Theme
-import java.security.Principal
 
 @Composable
 fun AplicacionSencilla(name: String, modifier: Modifier = Modifier) {

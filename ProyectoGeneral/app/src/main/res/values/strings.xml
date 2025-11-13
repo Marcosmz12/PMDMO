@@ -3,5 +3,17 @@
     <string name="historia">Historia</string>
     <string name="acercade">Acerca De</string>
     <string name="sobrenosotros">Sobre Nosotros</string>
-    <string name="fondo">Fondo de palmera</string>
+    <string name="fondo">Fondo de palmeras</string>
+    <string name="Historia">
+        El Weekend Beach Festival nació con la idea de unir la pasión por la música, el mar y la buena energía en un solo lugar. Su primera edición tuvo lugar en la playa de Torre del Mar (Málaga, España) a mediados de la década de 2010, con un espíritu claro: celebrar el verano con una mezcla única de estilos musicales y un ambiente libre y festivo.
+    </string>
+    <string name="Histroria2">
+        Desde entonces, el festival se ha consolidado como uno de los eventos musicales más importantes del calendario español, atrayendo cada año a decenas de miles de personas. Su principal característica es la diversidad musical, ya que en sus escenarios conviven géneros como el rock, el reggae, la electrónica, el hip hop, el pop y el indie, ofreciendo un cartel capaz de satisfacer a públicos muy distintos.
+    </string>
+    <string name="AcercaDe">
+        El Weekende Beach Festival se ha convertido en uno de los eventos musicales más esperados del verano. Celebrado en un entorno costero, combina la emoción de la música en vivo con la belleza de la playa, creando una experiencia única para los asistentes. El festival destaca por su diversidad de géneros, incluyendo rock, pop, electrónica, reggae, hip hop e indie, asegurando que todos los públicos encuentren algo que disfrutar.
+    </string>
+    <string name="AcerdaDe2">
+        Además de la música, el festival ofrece actividades complementarias como deportes acuáticos, zonas de descanso, food trucks con gastronomía local e internacional, y espacios interactivos que fomentan la convivencia y la diversión. Cada año, el Weekende Beach Festival atrae a miles de personas que buscan combinar buena música, ambiente festivo y la energía del mar, convirtiéndose en una cita ineludible para los amantes de la cultura festivalera.
+    </string>
 </resources>
