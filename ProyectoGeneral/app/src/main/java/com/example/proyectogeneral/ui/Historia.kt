@@ -29,12 +29,12 @@ import com.example.proyectogeneral.R
 import com.example.proyectogeneral.ui.theme.ProyectoGeneralTheme
 
 @Composable
-fun Histria() {
+fun Historia() {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onPrimary),
+            .background(MaterialTheme.colorScheme.tertiaryContainer),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -70,7 +70,7 @@ fun Histria() {
         ) {
         Text(
             stringResource(R.string.Historia),
-            color = MaterialTheme.colorScheme.onSecondary,
+            color = MaterialTheme.colorScheme.scrim,
             fontSize = 20.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -78,7 +78,7 @@ fun Histria() {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             stringResource(R.string.Histroria2),
-            color = MaterialTheme.colorScheme.onSecondary,
+            color = MaterialTheme.colorScheme.scrim,
             fontSize = 20.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -98,6 +98,6 @@ fun Histria() {
 @Composable
 fun HistoriaPreview() {
     ProyectoGeneralTheme {
-        Histria()
+        Historia()
     }
 }

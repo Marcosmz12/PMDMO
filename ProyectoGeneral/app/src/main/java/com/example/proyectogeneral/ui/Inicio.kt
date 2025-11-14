@@ -1,6 +1,5 @@
 package com.example.proyectogeneral.ui
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -35,7 +34,7 @@ fun Inicio(name: String, modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
+            .background(MaterialTheme.colorScheme.tertiaryContainer),
         verticalArrangement = Arrangement.spacedBy(50.dp, alignment = Alignment.Top),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -59,10 +58,6 @@ fun Inicio(name: String, modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Fit
             )
         }
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-
     }
     EstablecerBotones()
 }
@@ -77,41 +72,7 @@ fun EstablecerBotones(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(
-            onClick = {
-
-            },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.onTertiaryContainer
-            ),
-            shape = RoundedCornerShape(12.dp),
-            modifier = Modifier
-                .height(50.dp)
-                .width(180.dp)
-        ) {
-            Text(
-                stringResource(R.string.historia),
-                style = MaterialTheme.typography.titleLarge
-            )
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        Button(
-            onClick = {
-
-            },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.onTertiaryContainer
-            ),
-            shape = RoundedCornerShape(12.dp),
-            modifier = Modifier
-                .height(50.dp)
-                .width(180.dp),
-        ) {
-            Text(
-                stringResource(R.string.acercade),
-                style = MaterialTheme.typography.titleLarge
-            )
-        }
+        Configuracion()
     }
 }
 
