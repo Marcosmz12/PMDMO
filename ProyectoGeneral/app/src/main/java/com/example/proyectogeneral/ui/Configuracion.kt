@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
@@ -14,9 +16,11 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,13 +29,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.proyectogeneral.R
+import com.example.proyectogeneral.datos.ConfiguracionDataStore
 import com.example.proyectogeneral.ui.theme.ProyectoGeneralTheme
+import kotlinx.coroutines.launch
 
 
 @Composable
 fun Configuracion() {
 
     val context = LocalContext.current
+    val dataStore = remember { ConfiguracionDataStore(context) }
+    val scope = rememberCoroutineScope()
 
     val tipos = listOf("General", "VIP", "Backstage")
     var tipoEntrada by remember { mutableStateOf(tipos.first()) }
@@ -43,6 +51,21 @@ fun Configuracion() {
     val cantidades = (1..10).toList()
     var cantidadSeleccionada by remember { mutableStateOf(1) }
 
+    // Recuperar datos guardados
+    LaunchedEffect(Unit) {
+        launch {
+            dataStore.tipoEntradaFlow.collect { tipoEntrada = it }
+        }
+        launch {
+            dataStore.recibirRecordatoriosFlow.collect { recibirRecordatorios = it }
+        }
+        launch {
+            dataStore.reservarEstanciaFlow.collect { reservarEstancia = it }
+        }
+        launch {
+            dataStore.cantidadEntradasFlow.collect { cantidadSeleccionada = it }
+        }
+    }
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
@@ -74,6 +97,24 @@ fun Configuracion() {
             cantidadSeleccionada = cantidadSeleccionada,
             onCantidadChange = { cantidadSeleccionada = it }
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = {
+                scope.launch {
+                    dataStore.guardarConfiguracion(
+                        tipoEntrada,
+                        recibirRecordatorios,
+                        reservarEstancia,
+                        cantidadSeleccionada
+                    )
+                }
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text("Guardar Configuración")
+        }
     }
 }
 

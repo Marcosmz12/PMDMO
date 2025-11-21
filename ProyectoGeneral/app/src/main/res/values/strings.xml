@@ -18,4 +18,5 @@
     </string>
     <string name="recibir">Recibir recordatorios del festival</string>
     <string name="reservar_estancia">Reservar estancia durante el festival</string>
+    <string name="guardarConfiguracion">Guardar Configuración</string>
 </resources>
